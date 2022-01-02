@@ -1,0 +1,27 @@
+<h1> All Pokemons </h1>
+
+
+<section class="section">
+        <div class="container">
+        <% @pokemon.each do |pokemon| %> 
+     <div class="card">
+		  <div class="card-content">
+		    <div class="media">
+		      <div class="media-content"> 
+  <%= link_to pokemon.title, pokemon_path(pokemon)%>
+   </div>
+   </div>
+   <div class="category">
+  <%= pokemon.category %>
+  </div>
+  <div class="comment-count">
+		    	<span class="tag is-rounded"><%= pokemon.comments.count %> comments</span>
+		    </div>
+		  </div>
+		</div>
+		<% end %>
+	</div>
+</div>
+  
+
+ 

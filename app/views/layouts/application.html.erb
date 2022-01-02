@@ -11,6 +11,14 @@
   </head>
 
   <body>
+  <% if logged_in? %>
+  <%=link_to "Logout", logout_path, method:"delete" %>
+  <%=link_to "Add Pokemon", new_pokemon_path %>
+  <%=link_to "Show All Pokemon", pokemons_path %>
+  <% else %>
+  <%=link_to "Sign Up", signup_path %>
+  <%=link_to "Log In", login_path %>
+  <% end %>
     <%= yield %>
   </body>
 </html>

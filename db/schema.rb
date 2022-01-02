@@ -10,27 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_17_005301) do
+ActiveRecord::Schema.define(version: 2021_12_22_055329) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
     t.integer "user_id", null: false
-    t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.integer "pokemon_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "pokemons", force: :cascade do |t|
     t.string "title"
-    t.text "description"
-    t.integer "trainer_id", null: false
-    t.integer "type_id", null: false
+    t.text "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["trainer_id"], name: "index_pokemons_on_trainer_id"
-    t.index ["type_id"], name: "index_pokemons_on_type_id"
+    t.integer "user_id"
   end
 
   create_table "trainers", force: :cascade do |t|
@@ -41,8 +37,15 @@ ActiveRecord::Schema.define(version: 2021_11_17_005301) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "comments", "posts"
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "comments", "pokemons"
   add_foreign_key "comments", "users"
-  add_foreign_key "pokemons", "trainers"
-  add_foreign_key "pokemons", "types"
+  add_foreign_key "pokemons", "users"
 end

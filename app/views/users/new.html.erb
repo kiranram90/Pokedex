@@ -3,6 +3,14 @@
 <%= form_for(@user, url:'/signup') do |f| %>
 <fieldset>
 <p>
+<% if @user.errors.any? %>
+<h2> Errors: </h2>
+<ul>
+<% @user.errors.full_messages.each do |message| %>
+<li><%= message %></li>
+<% end %>
+</ul>
+<% end %>
 <%= f.label :username %>
 <%= f.text_field :username, required:true %>
 <br>

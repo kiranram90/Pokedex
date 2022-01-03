@@ -11,7 +11,7 @@
   </head>
 
   <body>
-  <% if logged_in? %>
+ <% if logged_in? %>
   <%=link_to "Logout", logout_path, method:"delete" %>
   <%=link_to "Add Pokemon", new_pokemon_path %>
   <%=link_to "Show All Pokemon", pokemons_path %>

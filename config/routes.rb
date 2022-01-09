@@ -12,6 +12,12 @@ root "sessions#home"
 #logout route
  delete 'logout' => 'sessions#destroy'
 
+#Omniauth Git
+get "/auth/:provider/callback" => 'sessions#git'
+
+#Omniauth Facebook
+get "/auth/:provider/callback" => 'sessions#facebook'
+
 resources :comments
 
 resources :users do

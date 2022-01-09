@@ -17,6 +17,32 @@ class SessionsController < ApplicationController
         end
     end
 
+    def git
+      @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
+        user.username = auth["info"]["first_name"]
+        user.password = SecureRandom.hex(10)
+      end
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+      else
+        redirect_to pokemons_path
+      end  
+    end
+
+    def facebook
+      @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
+        user.username = auth["info"]["first_name"]
+        user.password = SecureRandom.hex(10)
+      end
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+      else
+        redirect_to pokemons_path
+      end  
+    end
+
     def destroy
         session.clear
         redirect_to '/'
@@ -26,6 +52,10 @@ class SessionsController < ApplicationController
 
     def user_params
       params.require(:user).permit(:email,:username, :password)
+    end
+
+    def auth
+      request.env['omniauth.auth']
     end
 
 end

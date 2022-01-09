@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <div class="container-fluid">
     <title>Pokedex</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -13,11 +14,17 @@
   <body>
  <% if logged_in? %>
   <%=link_to "Logout", logout_path, method:"delete" %>
+  <span></span>
   <%=link_to "Add Pokemon", new_pokemon_path %>
   <%=link_to "Show All Pokemon", pokemons_path %>
   <% else %>
   <%=link_to "Sign Up", signup_path %>
+  <span></span>
   <%=link_to "Log In", login_path %>
+  <span></span>
+  <%= link_to('Log in with GitHub!', '/auth/github', method: :post) %>
+    <span></span>
+  <%= link_to('Log in with GitHub!', '/auth/facebook', method: :post) %>
   <% end %>
     <%= yield %>
   </body>

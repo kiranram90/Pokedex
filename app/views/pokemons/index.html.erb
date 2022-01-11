@@ -1,5 +1,11 @@
 <h1 class="title">All Pokemons</h1>
 
+<%= search_form_for @q do |f| %>
+
+  # Search For Pokemon
+  <%= f.label :title_cont %>
+  <%= f.search_field :title_cont %>
+<% end %>
 
 <section class="section">
         <div class="container">

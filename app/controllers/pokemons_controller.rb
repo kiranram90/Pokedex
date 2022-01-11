@@ -7,8 +7,11 @@ class PokemonsController < ApplicationController
   end
 
   def index
-   @pokemon = Pokemon.all
+      @q = Pokemon.ransack(params[:q])
+      @pokemon = @q.result(distinct: true)
   end
+
+  
 
   def show
     @pokemon = Pokemon.find_by_id(params[:id])

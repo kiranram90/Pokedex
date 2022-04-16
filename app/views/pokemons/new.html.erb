@@ -22,6 +22,10 @@
   <%= f.select(:category, options_for_select([['FIRE','FIRE'], ['WATER', 'WATER'], ['GRASS', 'GRASS'],['ELECTRIC', 'ELECTRIC'],['FLYING', 'FLYING']])) %>
 </div>
   </div>
+  <div class="field">
+  <div class="control">
+   <%= f.file_field :image %><br>
+</div>
 
 <%= f.submit %>
 

@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
     before_action :redirect_if_not_logged_in
-    before_action :set_comment, only: [:show, :edit, :update]
+    before_action :set_comment, only: [:show, :edit, :update, :destroy]
+    before_action :redirect_if_not_comment_user, only: [:edit, :update, :destroy]
 
     # return all the comments or just the comments for a specific pokemon
     def index
@@ -70,6 +71,11 @@ end
       redirect_to pokemons_path
     end
   end
+
+  def redirect_if_not_comment_user
+    redirect_to pokemons_path if @comment.user != current_user
+    flash[:message] = "You do not have permission to change this entry"
+ end
 
 end
 

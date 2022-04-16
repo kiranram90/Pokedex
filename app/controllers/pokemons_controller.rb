@@ -12,12 +12,12 @@ class PokemonsController < ApplicationController
   end
 
   
-
+  
   def show
     @pokemon = Pokemon.find_by_id(params[:id])
     redirect_to pokemons_path if !@pokemon
   end
-
+ 
 
     def create
       @pokemon = current_user.pokemons.build(pokemon_params)
@@ -32,7 +32,7 @@ class PokemonsController < ApplicationController
     private
 
     def pokemon_params
-       params.require(:pokemon).permit(:title,:category)
+       params.require(:pokemon).permit(:title,:category,:image)
     end
 
      

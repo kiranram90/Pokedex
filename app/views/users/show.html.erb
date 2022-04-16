@@ -1,8 +1,12 @@
 <h1>Welcome <%=@user.username%></h1>
 
-<%= form_tag("/logout", method : 'delete') do %>
+<div style="width:800px; margin:0 auto;">
+<%= image_tag("Pokemon Trainer.jpeg") %>
+</div>
+<%= form_tag("/logout", method: 'delete') do %>
 
 
 <%= submit_tag "Logout" %>
  </form>
 
+<% end %>

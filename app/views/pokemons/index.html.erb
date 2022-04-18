@@ -1,5 +1,5 @@
 <h1 class="title">All Pokemons</h1>
-
+<%= link_to "Filter pokemon with comments", pokemons_path(with_comments: true)%>
 <%= search_form_for @q do |f| %>
 
   # Search For Pokemon

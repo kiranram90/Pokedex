@@ -1,32 +1,7 @@
-<% if @comment.pokemon %>
-<h1>New Comment for <%= @comment.pokemon.title%>!</h1>
+<% if @pokemon %>
+  <h1>New Comment for <%= @pokemon.title%>!</h1>
 <% else %>
-<h1>New Comment!</h1>
+  <h1>New Comment!</h1>
 <% end %>
 
-<%= form_for([@comment.pokemon,@comment]) do |f| %>
-
-<% if @comment.errors.any? %>
-<h2> Errors: </h2>
-<ul>
-<% @comment.errors.full_messages.each do |message| %>
-<li><%= message %></li>
-<% end %>
-</ul>
-<% end %>
-
-<% if !@comment.pokemon %>  #if not nested
-
-<%= f.label :pokemon %>
-<%= f.collection_select :pokemon_id, Pokemon.all, :id, :title %>
-<% else %>
-  <%= f.hidden_field :pokemon_id %>
-  <% end %>
-
-<%= f.label :description %>
-<%= f.text_field :content %>
-
-<%= f.submit %>
-
-
-<% end %>
+<%= render "form", locals: {comment: @comment, pokemon: @pokemon} %>

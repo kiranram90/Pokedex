@@ -1,0 +1,16 @@
+<%= form_for([@pokemon, @comment]) do |f| %>
+  <% if @comment.errors.any? %>
+    <h2> Errors: </h2>
+    <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <%= f.hidden_field :pokemon_id %>
+  <%= f.label :description %>
+  <%= f.text_field :content %>
+
+  <%= f.submit %>
+<% end %>

@@ -16,14 +16,14 @@ class CommentsController < ApplicationController
     end
 
     def new
-#if it is nested and when we find the post
+        #if it is nested and when we find the post
         if params[:pokemon_id] && @pokemon = Pokemon.find_by_id(params[:pokemon_id]) #if there is a pokemon id then it is nested and if we can find pokemon with that ID.
            @comment = @pokemon.comments.build
         else
             @error ="That Pokemon doesn't exist" if params[:pokemon_id]
-        @comment = Comment.new 
+            @comment = Comment.new 
+        end
     end
-end
 
     def create
         @comment = current_user.comments.build(comment_params)
@@ -35,7 +35,6 @@ end
     end
 
     def show 
-        
     end
 
     def edit
@@ -61,7 +60,7 @@ end
     private
 
   def comment_params
-    params.require(:comment).permit(:content,:pokemon_id)
+    params.require(:comment).permit(:content, :pokemon_id)
   end
 
   def set_comment

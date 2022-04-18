@@ -7,8 +7,13 @@ class PokemonsController < ApplicationController
   end
 
   def index
-      @q = Pokemon.ransack(params[:q])
+    @q = Pokemon.ransack(params[:q])
+
+    if params[:with_comments]
+      @pokemon = Pokemon.with_comments
+    else
       @pokemon = @q.result(distinct: true)
+    end
   end
 
   

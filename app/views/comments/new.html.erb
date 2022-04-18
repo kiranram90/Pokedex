@@ -1,7 +1,0 @@
-<% if @pokemon %>
-  <h1>New Comment for <%= @pokemon.title%>!</h1>
-<% else %>
-  <h1>New Comment!</h1>
-<% end %>
-
-<%= render "form", locals: {comment: @comment, pokemon: @pokemon} %>

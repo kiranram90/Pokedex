@@ -7,5 +7,4 @@ class Pokemon < ApplicationRecord
   validates :title, :presence => true
   validates :title, :uniqueness => {:case_sensitive => false}
 
-  scope :with_comments, -> { joins(:comments).group('pokemons.id').having('count(pokemon_id) > 0') }
 end

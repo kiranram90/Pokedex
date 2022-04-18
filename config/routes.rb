@@ -11,24 +11,7 @@ root "sessions#home"
 
 #logout route
  delete 'logout' => 'sessions#destroy'
- get 'logout' => 'sessions#destroy'
 
-#Omniauth Git
-get "/auth/github/callback" => 'sessions#git'
-
-#Omniauth Facebook
-get "/auth/facebook/callback" => 'sessions#facebook'
-
-resources :comments
-
-resources :users do
-  resources :pokemons, only: [:new, :create, :index,:show]
-end
-resources :pokemons do
-  resources :comments, only: [:new,:create, :index, :show]
-end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
 
 
 

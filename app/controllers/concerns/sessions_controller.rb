@@ -16,18 +16,7 @@ class SessionsController < ApplicationController
         end
     end
 
-    def git
-      @user =
-        User.find_or_create_by(uid: auth['uid']) do |u|
-          u.username = auth['info']['nickname']
-          u.email = auth['info']['email']
-          u.password = "github"
-        end
-
-      session[:user_id] = @user.id
-
-      redirect_to user_path(@user)
-    end
+    
 
     def facebook
       @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|

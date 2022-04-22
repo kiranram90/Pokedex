@@ -1,5 +1,7 @@
 # README
 
+This is Pokedex app that let's trainers log in and add pokemon, share comments, and add images. Have fun!
+
 First commit
 
 This README would normally document whatever steps are necessary to get the
